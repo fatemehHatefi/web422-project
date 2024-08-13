@@ -22,7 +22,7 @@ const movies = [
       "releaseYear": 2010,
       "discontinued": false,
       "image": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
-      "summary": "A skilled thief, who steals corporate secrets through the use of dream-sharing technology, is given a chance to have his criminal history erased if he can implant an idea into a target's subconscious.",
+      "summary": "Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction, stealing valuable secrets from deep within the subconscious during the dream state when the mind is at its most vulnerable. Cobb's rare ability has made him a coveted player in this treacherous new world of corporate espionage, but it has also made him an international fugitive and cost him everything he has ever loved. Now Cobb is being offered a chance at redemption. One last job could give him his life back but only if he can accomplish the impossible—inception. Instead of the perfect heist, Cobb and his team of specialists have to pull off the reverse: their task is not to steal an idea but to plant one. If they succeed, it could be the perfect crime, but no amount of careful planning or expertise can prepare the team for the dangerous enemy that seems to predict their every move. An enemy that only Cobb could have seen coming.",
       "category": "Science Fiction & Fantasy"
     },
     {
@@ -33,7 +33,7 @@ const movies = [
       "releaseYear": 2014,
       "discontinued": false,
       "image": "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg",
-      "summary": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+      "summary": "In Earth's future, a global crop blight and second Dust Bowl are slowly rendering the planet uninhabitable. Professor Brand (Michael Caine), a brilliant NASA physicist, is working on plans to save mankind by transporting Earth's population to a new home via a wormhole. But first, Brand must send former NASA pilot Cooper (Matthew McConaughey) and a team of researchers through the wormhole and across the galaxy to find out which of three planets could be mankind's new home.",
       "category": "Science Fiction & Fantasy"
     },
     {

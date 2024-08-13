@@ -15,6 +15,7 @@ const ReviewForm = ({ userEmail, movieId }) => {
         movieId,
         rating,
         comment,
+        date: new Date().toISOString(), // Include current date
       });
 
       setMessage(response.data.message);
