@@ -24,7 +24,7 @@ const Review = ({ movieId, userId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`https://backrender-pzkd.onrender.com/reviews`, {
+      const response = await fetch(`https://backrender-pzkd.onrender.com/api/reviews`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

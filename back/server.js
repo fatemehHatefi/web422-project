@@ -151,7 +151,7 @@ app.get('/search', async (req, res) => {
 });
 
 // Add a review for a movie
-app.post('/reviews', async (req, res) => {
+app.post('/api/reviews', async (req, res) => {
   try {
     const { userEmail, movieId, rating, comment } = req.body;
 
@@ -178,7 +178,7 @@ app.post('/reviews', async (req, res) => {
 });
 
 // Route to get reviews for a specific movie
-app.get('/reviews/:movieId', async (req, res) => {
+app.get('/api/reviews/:movieId', async (req, res) => {
   try {
     const { movieId } = req.params;
     const user = await User.findOne({ "reviews.movie": movieId });

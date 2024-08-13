@@ -10,7 +10,7 @@ const ReviewForm = ({ userEmail, movieId }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://backrender-pzkd.onrender.com/reviews', {
+      const response = await axios.post('https://backrender-pzkd.onrender.com/api/reviews', {
         userEmail,
         movieId,
         rating,
