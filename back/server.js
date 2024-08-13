@@ -23,7 +23,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes); // Use /api/auth as the prefix for authentication routes
 app.use('/api/wishlist', wishlistRoutes);
-app.use('/api/review', contactRoutes); // Use /api as the prefix for contact routes
+app.use('/api/reviews', reviewRoutes); // Use /api/reviews as the prefix for review routes
 
 // Root route
 app.get('/', (req, res) => {
@@ -50,7 +50,7 @@ app.get('/movies', async (req, res) => {
   }
 });
 
-// Get user by ID
+// Get user by email
 app.get('/user', async (req, res) => {
   try {
     const email = req.query.email;
@@ -99,21 +99,12 @@ app.post('/history', async (req, res) => {
   try {
     const { userEmail, movieId } = req.body;
 
-    console.log(`User ID: ${userEmail}, Movie ID: ${movieId}`);
+    console.log(`User Email: ${userEmail}, Movie ID: ${movieId}`);
 
     const user = await User.findOne({ email: userEmail });
 
-    console.log(user);
-
-
     if (!user || !movieId) {
-      return res.status(400).json({ message: 'User ID and Movie ID are required' });
-    }
-
-    
-    console.log(user);
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(400).json({ message: 'User Email and Movie ID are required' });
     }
 
     if (!user.visitedMovies.includes(movieId)) {
@@ -128,26 +119,17 @@ app.post('/history', async (req, res) => {
   }
 });
 
-
-// view history
+// View history
 app.post('/historyView', async (req, res) => {
   try {
     const { userEmail } = req.body;
 
     const user = await User.findOne({ email: userEmail });
 
-    console.log(user);
-
-
-    if (!user) {
-      return res.status(400).json({ message: 'User ID and Movie ID are required' });
-    }
-
-    
-    console.log(user);
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
+
     res.status(200).json(user.visitedMovies);
 
   } catch (error) {
@@ -167,6 +149,7 @@ app.get('/search', async (req, res) => {
     res.status(500).json({ message: 'Error searching movies', error: err });
   }
 });
+
 // Add a review for a movie
 app.post('/reviews', async (req, res) => {
   try {
@@ -193,6 +176,7 @@ app.post('/reviews', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 // Route to get reviews for a specific movie
 app.get('/reviews/:movieId', async (req, res) => {
   try {
