@@ -193,7 +193,24 @@ app.post('/reviews', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+// Route to get reviews for a specific movie
+app.get('/reviews/:movieId', async (req, res) => {
+  try {
+    const { movieId } = req.params;
+    const user = await User.findOne({ "reviews.movie": movieId });
 
+    if (!user) {
+      return res.status(404).json({ message: 'No reviews found for this movie' });
+    }
+
+    // Filter reviews for the specified movie
+    const reviews = user.reviews.filter(review => review.movie.toString() === movieId);
+    res.json(reviews);
+  } catch (error) {
+    console.error('Error fetching reviews:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
