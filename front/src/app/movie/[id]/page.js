@@ -14,6 +14,9 @@ export default function MovieDetails() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Simulate getting userId from local storage or context
+    const fetchedUserId = localStorage.getItem('userEmail');
+
     const fetchMovie = async (id) => {
       setLoading(true);
       setError(null);
@@ -21,7 +24,28 @@ export default function MovieDetails() {
         const response = await axios.get(`http://localhost:5001/movies/${id}`);
         if (response.status === 200) {
           setMovie(response.data);
+          
+          console.log(fetchedUserId)
+          
+
+          // Update the user's visited movies
+          if (fetchedUserId) {
+            console.log("teszt");
+            await fetch('http://localhost:5001/history', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+              },
+              body: JSON.stringify({
+                userEmail: fetchedUserId, // Replace with actual variable containing the email
+                movieId: id
+              })
+            });
+            
+          }
         } else {
+          
           throw new Error('Movie not found');
         }
       } catch (error) {

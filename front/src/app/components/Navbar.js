@@ -9,6 +9,7 @@ import styles from './navbar.module.css'; // Import custom styles
 const Navbar = ({ setSearchTerm }) => {
   const [searchQuery, setSearchQueryState] = useState('');
   const [userEmail, setUserEmail] = useState(null);
+  const [userName, setUserName] = useState(null);
   const router = useRouter();
   const { pathname } = router; // Get current route path
 
@@ -17,10 +18,10 @@ const Navbar = ({ setSearchTerm }) => {
 
   useEffect(() => {
     const email = localStorage.getItem('userEmail');
+    const name = localStorage.getItem('userName');
     setUserEmail(email);
+    setUserName(name);
   }, []);
-
-  const userName = localStorage.getItem('userName');
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -39,7 +40,9 @@ const Navbar = ({ setSearchTerm }) => {
   const handleLogout = () => {
     localStorage.removeItem('userToken');
     localStorage.removeItem('userEmail');
+    localStorage.removeItem('userName'); // Clear userName as well
     setUserEmail(null);
+    setUserName(null); // Clear userName state
     router.push('/login'); // Redirect to login page after logout
   };
 
@@ -70,6 +73,15 @@ const Navbar = ({ setSearchTerm }) => {
               href="/watchlist" 
               className={`${styles.navLink} ${isActive('/watchlist')}`}>
               Watchlist
+            </Nav.Link>
+          )}
+
+          {userEmail && (
+            <Nav.Link 
+              as={Link} 
+              href="/visitedMovies" 
+              className={`${styles.navLink} ${isActive('/visitedMovies')}`}>
+              visited Movies
             </Nav.Link>
           )}
 
