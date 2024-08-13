@@ -107,9 +107,9 @@ const Navbar = ({ setSearchTerm }) => {
           </Nav.Link>
           <Nav.Link 
             as={Link} 
-            href="/contact" 
-            className={`${styles.navLink} ${isActive('/contact')}`}>
-            Contact
+            href="/review" 
+            className={`${styles.navLink} ${isActive('/review')}`}>
+            Review
           </Nav.Link>
         </Nav>
         <Form className={`d-flex ${styles.searchForm}`} onSubmit={handleSearch}>
