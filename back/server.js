@@ -124,15 +124,18 @@ app.post('/historyView', async (req, res) => {
   try {
     const { userEmail } = req.body;
 
-    const user = await User.findOne({ email: userEmail });
+    const user = await User.findOne({ email: userEmail }).populate('visitedMovies');
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-
-    res.status(200).json(user.visitedMovies);
+    const populatedHistory = await Movie.find({
+      _id: { $in: user.visitedMovies }
+    });
+    res.status(200).json(populatedHistory);
 
   } catch (error) {
+    console.error('Error fetching history:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });

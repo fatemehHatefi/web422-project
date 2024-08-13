@@ -10,7 +10,6 @@ const History = () => {
   const [loading, setLoading] = useState(true);
   const email = localStorage.getItem('userEmail'); // Retrieve the email from localStorage
 
-
   
   useEffect(() => {
     const fetchUserHistory = async () => {
