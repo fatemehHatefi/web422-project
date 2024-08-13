@@ -24,12 +24,15 @@ const Review = ({ movieId, userId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`/api/users/${userId}/reviews`, {
+      const response = await fetch(`https://backrender-pzkd.onrender.com/api/reviews`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          userEmail: userId // Ensure userId is used as userEmail in the request body
+        }),
       });
 
       if (response.ok) {
@@ -52,6 +55,18 @@ const Review = ({ movieId, userId }) => {
     <div className={styles.reviewContainer}>
       <h1 className={styles.heading}>Submit Your Review</h1>
       <form onSubmit={handleSubmit} className={styles.reviewForm}>
+        <input
+          type="hidden"
+          id="movie"
+          name="movie"
+          value={formData.movie}
+        />
+        <input
+          type="hidden"
+          id="date"
+          name="date"
+          value={formData.date}
+        />
         <label htmlFor="rating" className={styles.label}>
           Rating:
           <input
