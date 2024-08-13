@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const wishlistRoutes = require('./routes/wishlistRoutes');
-const contactRoutes = require('./routes/contactRoutes'); // Import contact routes
+const reviewRoutes = require('./routes/reviews'); // Import review routes
 
 const { Movie } = require('./models'); // Import Movie model from models.js
 const { User } = require('./models');
@@ -23,7 +23,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes); // Use /api/auth as the prefix for authentication routes
 app.use('/api/wishlist', wishlistRoutes);
-app.use('/api/contact', contactRoutes); // Use /api as the prefix for contact routes
+app.use('/api/review', contactRoutes); // Use /api as the prefix for contact routes
 
 // Root route
 app.get('/', (req, res) => {
