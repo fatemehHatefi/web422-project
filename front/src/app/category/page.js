@@ -14,7 +14,7 @@ const CategoryPage = () => {
     const fetchMovies = async () => {
       if (category) {
         try {
-          const response = await fetch(`http://localhost:5001/category?category=${encodeURIComponent(category)}`);
+          const response = await fetch(`https://backrender-pzkd.onrender.com/category?category=${encodeURIComponent(category)}`);
           
           if (response.ok) {
             const data = await response.json();
@@ -37,7 +37,7 @@ const CategoryPage = () => {
       try {
         const email = localStorage.getItem('userEmail');
         if (email) {
-          const response = await fetch(`http://localhost:5001/user?email=${encodeURIComponent(email)}`, {
+          const response = await fetch(`https://backrender-pzkd.onrender.com/user?email=${encodeURIComponent(email)}`, {
             method: 'GET',
             headers: {
               'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include auth token if needed
@@ -61,7 +61,7 @@ const CategoryPage = () => {
 
   const handleAddToWatchlist = async (userId, movieId) => {
     try {
-      const response = await fetch('http://localhost:5001/api/wishlist/add', {
+      const response = await fetch('https://backrender-pzkd.onrender.com/api/wishlist/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ const CategoryPage = () => {
 
   const handleRemoveFromWatchlist = async (userId, movieId) => {
     try {
-      const response = await fetch('http://localhost:5001/api/wishlist/remove', {
+      const response = await fetch('https://backrender-pzkd.onrender.com/api/wishlist/remove', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -21,7 +21,7 @@ export default function MovieDetails() {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`http://localhost:5001/movies/${id}`);
+        const response = await axios.get(`https://backrender-pzkd.onrender.com/movies/${id}`);
         if (response.status === 200) {
           setMovie(response.data);
           
@@ -31,7 +31,7 @@ export default function MovieDetails() {
           // Update the user's visited movies
           if (fetchedUserId) {
             console.log("teszt");
-            await fetch('http://localhost:5001/history', {
+            await fetch('https://backrender-pzkd.onrender.com/history', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
